@@ -5,11 +5,13 @@
 </head>
 <body>
 <jsp:useBean id="person" class="by.bsu.fpmi.contactRegistration.model.Person" scope="session"/>
+<jsp:useBean id="lastFormId" class="java.lang.String" scope="session"/>
 <h1>Contact Registration</h1>
 
 <P>
 
-<form action="addCompany" method="POST">
+<form name="regForm" action="addCompany" method="POST">
+    <input type="hidden" name="formId" value="1">
 
     <label>First Name:</label>
     <input type="text" size="20" name="firstname"><br>

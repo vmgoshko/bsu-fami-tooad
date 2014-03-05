@@ -13,8 +13,18 @@ public class AddFullNameServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String lastFormIdObj = (String) request.getSession().getAttribute("lastFormId");
+        Integer formId = Integer.parseInt(request.getParameter("formId"));
 
-        Person person = (Person) request.getSession().getAttribute("person");
+        Person person;
+        request.getSession().setAttribute("lastFormId", formId.toString());
+
+        if (!lastFormIdObj.equals("") && Integer.parseInt(lastFormIdObj) < formId){
+            person = (Person) request.getSession().getAttribute("person");
+        } else {
+            person = new Person();
+            request.getSession().setAttribute("person", person);
+        }
 
         personService.saveFullName(person,
                 request.getParameter("firstname"),

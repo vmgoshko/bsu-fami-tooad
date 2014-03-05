@@ -14,6 +14,6 @@ public class PersonService {
     }
 
     public void saveHobby(Person person, String hobby){
-        person.setCompany(hobby);
+        person.setHobby(hobby);
     }
 }

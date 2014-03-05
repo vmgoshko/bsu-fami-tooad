@@ -7,7 +7,8 @@
 <h1>Personal Info Registration</h1>
 <P>
 
-<form action="save" method="POST">
+<form name="regForm" action="save" method="POST">
+    <input type="hidden" name="formId" value="3">
 
     <label>First Name: ${person.firstName}</label>
     <input type="hidden" size="20" name="firstname" value="${person.firstName}"><br>

@@ -7,7 +7,8 @@
 <h1>Person's Company Registration</h1>
 <P>
 
-<form action="addHobby" method="POST">
+<form name="regForm" action="addHobby" method="POST">
+    <input type="hidden" name="formId" value="2">
 
     <label>First Name: ${person.firstName}</label>
     <input type="hidden" size="20" name="firstname" value="${person.firstName}"><br>

@@ -13,11 +13,28 @@ public class AddCompanyServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Person person = (Person) request.getSession().getAttribute("person");
+        String lastFormIdObj = (String) request.getSession().getAttribute("lastFormId");
+        Integer formId = Integer.parseInt(request.getParameter("formId"));
 
-        personService.saveCompany(person, request.getParameter("companyname"));
+        Person person;
+        request.getSession().setAttribute("lastFormId", formId.toString());
 
-        request.getRequestDispatcher("hobby.jsp").forward(request, response);
+        if (!lastFormIdObj.equals("") && Integer.parseInt(lastFormIdObj) < formId){
+            person = (Person) request.getSession().getAttribute("person");
+            personService.saveCompany(person, request.getParameter("companyname"));
+            request.getRequestDispatcher("hobby.jsp").forward(request, response);
+        } else {
+            person = (Person) request.getSession().getAttribute("person");
+            if (person.getCompany().equals(request.getParameter("companyname"))){
+                response.sendRedirect("hobby.jsp");
+            } else {
+                person = new Person();
+                request.getSession().setAttribute("person", person);
+                response.sendRedirect("index.jsp");
+            }
+
+        }
+
     }
 
     @Override
