@@ -6,29 +6,11 @@
            version="2.5">
 
     <servlet>
-        <servlet-name>ContactRegistration</servlet-name>
-        <servlet-class>by.bsu.fpmi.contactRegistration.servlets.AddFullNameServlet</servlet-class>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>by.bsu.fpmi.contactRegistration.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ContactRegistration</servlet-name>
-        <url-pattern>/addCompany</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>CompanyRegistration</servlet-name>
-        <servlet-class>by.bsu.fpmi.contactRegistration.servlets.AddCompanyServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CompanyRegistration</servlet-name>
-        <url-pattern>/addHobby</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>HobbyRegistration</servlet-name>
-        <servlet-class>by.bsu.fpmi.contactRegistration.servlets.AddHobbyServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HobbyRegistration</servlet-name>
-        <url-pattern>/save</url-pattern>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

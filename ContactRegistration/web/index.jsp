@@ -12,6 +12,7 @@
 
 <form name="regForm" action="addCompany" method="POST">
     <input type="hidden" name="formId" value="1">
+    <input type="hidden" name="action" value="addFullName">
 
     <label>First Name:</label>
     <input type="text" size="20" name="firstname"><br>

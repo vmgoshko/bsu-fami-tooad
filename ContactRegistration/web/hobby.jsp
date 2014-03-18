@@ -9,6 +9,7 @@
 
 <form name="regForm" action="save" method="POST">
     <input type="hidden" name="formId" value="3">
+    <input type="hidden" name="action" value="addHobby">
 
     <label>First Name: ${person.firstName}</label>
     <input type="hidden" size="20" name="firstname" value="${person.firstName}"><br>
@@ -17,7 +18,7 @@
     <input type="hidden" size="20" name="lastname" value="${person.lastName}"><br>
 
     <label>Company Name: ${person.company}</label>
-    <input type="hidden" size="20" name="companyname" value="${person.company}"><br>
+    <input type="hidden" size="20" name="company" value="${person.company}"><br>
 
     <label>Hobby: </label>
     <input type="text" size="20" name="hobby"><br>
