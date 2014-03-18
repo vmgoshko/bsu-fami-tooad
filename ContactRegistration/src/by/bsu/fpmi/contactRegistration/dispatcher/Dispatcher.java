@@ -4,14 +4,15 @@ import by.bsu.fpmi.contactRegistration.commands.AddCompanyCommand;
 import by.bsu.fpmi.contactRegistration.commands.AddFullNameCommand;
 import by.bsu.fpmi.contactRegistration.commands.AddHobbyCommand;
 import by.bsu.fpmi.contactRegistration.commands.Command;
-import by.bsu.fpmi.contactRegistration.model.Person;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 public class Dispatcher {
 
-    public void invoke(Map<String, Object> model, Person person){
-        factory(model).execute(model, person);
+    public void invoke(Map<String, Object> model){
+        factory(model).execute(model);
     }
 
     private Command factory(Map<String, Object> model){

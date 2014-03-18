@@ -7,7 +7,8 @@ import java.util.Map;
 public class AddHobbyCommand implements Command {
 
     @Override
-    public void execute(Map<String, Object> model, Person person) {
+    public void execute(Map<String, Object> model) {
+        Person person =(Person)model.get("person");
         String lastFormIdObj = model.get("lastFormId").toString();
         Integer formId = Integer.parseInt(model.get("formId").toString());
 
