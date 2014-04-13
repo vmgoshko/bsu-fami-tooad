@@ -8,15 +8,7 @@ public class AddFullNameCommand implements Command {
 
     @Override
     public void execute(Map<String, Object> model) {
-        Person person =(Person)model.get("person");
-        String lastFormIdObj = model.get("lastFormId").toString();
-        Integer formId = Integer.parseInt(model.get("formId").toString());
-
-        model.put("lastFormId", formId.toString());
-
-        if (!lastFormIdObj.equals("") && (Integer.parseInt(lastFormIdObj) < formId)){
-            person = new Person();
-        }
+        Person person = (Person) model.get("person");
 
         person.setFirstName(model.get("firstname").toString());
         person.setLastName(model.get("lastname").toString());

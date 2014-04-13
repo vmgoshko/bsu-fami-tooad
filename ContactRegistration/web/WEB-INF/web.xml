@@ -6,11 +6,12 @@
            version="2.5">
 
     <servlet>
-        <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.bsu.fpmi.contactRegistration.controller.FrontController</servlet-class>
+        <servlet-name>EntryPointServlet</servlet-name>
+        <servlet-class>by.bsu.fpmi.contactRegistration.controller.EntryPointServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FrontController</servlet-name>
+        <servlet-name>EntryPointServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

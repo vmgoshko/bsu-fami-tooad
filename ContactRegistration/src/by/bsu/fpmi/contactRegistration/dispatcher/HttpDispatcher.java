@@ -16,7 +16,6 @@ public class HttpDispatcher extends Dispatcher {
 
         super.invoke(model);
 
-        request.getSession().setAttribute("lastFormId", model.get("lastFormId"));
-        request.getRequestDispatcher((String)model.get("page")).forward(request, response);
+        request.getRequestDispatcher((String) model.get("page")).forward(request, response);
     }
 }
