@@ -13,6 +13,6 @@ public class AddFullNameCommand implements Command {
         person.setFirstName(model.get("firstname").toString());
         person.setLastName(model.get("lastname").toString());
 
-        model.put("page", "company.jsp");
+        model.put("page", "company");
     }
 }

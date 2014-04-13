@@ -10,7 +10,7 @@ public class AddHobbyCommand implements Command {
     public void execute(Map<String, Object> model) {
         Person person = (Person) model.get("person");
         person.setHobby(model.get("hobby").toString());
-        model.put("page", "success.jsp");
+        model.put("page", "success");
 
     }
 }

@@ -13,7 +13,8 @@ public class FormFilter implements Filter {
         int currentFormId = Integer.parseInt(request.getParameter("formId"));
 
         if(!lastFormId.equals("") && Integer.parseInt(lastFormId) >= currentFormId){
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            response.sendRedirect("");
+            request.getSession().setAttribute("lastFormId", "");
             return false;
         } else {
             request.getSession().setAttribute("lastFormId", String.valueOf(currentFormId));

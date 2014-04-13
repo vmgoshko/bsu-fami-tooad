@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
 public class FrontController extends HttpServlet {
@@ -19,6 +20,10 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ((HttpDispatcher)dispatcher).dispatch(req, resp);
+        try {
+            ((HttpDispatcher)dispatcher).dispatch(req, resp);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 }

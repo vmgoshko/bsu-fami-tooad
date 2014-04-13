@@ -10,6 +10,6 @@ public class AddCompanyCommand implements Command {
     public void execute(Map<String, Object> model) {
         Person person = (Person) model.get("person");
         person.setCompany(model.get("company").toString());
-        model.put("page", "hobby.jsp");
+        model.put("page", "hobby");
     }
 }
