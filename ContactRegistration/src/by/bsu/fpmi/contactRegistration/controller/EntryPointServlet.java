@@ -11,19 +11,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class EntryPointServlet extends HttpServlet {
+
     private FrontController frontController = new FrontController();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Filter> filters = new FilterFactory().createFilters();
         for (Filter filter : filters) {
             if (!filter.doFilter(request, response))
                 return;
         }
 
-        frontController.doPost(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        frontController.service(request, response);
     }
 }

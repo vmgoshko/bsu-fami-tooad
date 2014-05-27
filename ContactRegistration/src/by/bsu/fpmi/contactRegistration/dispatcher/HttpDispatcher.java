@@ -1,10 +1,11 @@
 package by.bsu.fpmi.contactRegistration.dispatcher;
 
-
 import by.bsu.fpmi.contactRegistration.model.Person;
+import by.bsu.fpmi.contactRegistration.utils.Configuration;
 import by.bsu.fpmi.contactRegistration.utils.ModelBuilder;
+import by.bsu.fpmi.contactRegistration.utils.PropertyBuilder;
+import by.bsu.fpmi.contactRegistration.utils.XmlBuilder;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.Transformer;
@@ -18,24 +19,40 @@ import java.util.Map;
 
 public class HttpDispatcher extends Dispatcher {
 
-    public void dispatch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransformerException {
-        Map<String, Object> model = ModelBuilder.build(request);
+    private Map<String, Object> model;
 
-        super.invoke(model);
+    public void dispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        model = ModelBuilder.build(request);
+        PropertyBuilder.build(request);
 
-        printPage(request, response, (String) model.get("page"), (Person) model.get("person"));
+        if (model.get("action") != null){
+            super.invoke(model);
+        }
+        printPage(response);
     }
 
-    private void printPage(HttpServletRequest request, HttpServletResponse response, String page, Person person) throws IOException, TransformerException {
+    private void printPage(HttpServletResponse response) throws IOException, TransformerException {
         TransformerFactory factory = TransformerFactory.newInstance();
-        StreamSource xslStream = new StreamSource(request.getServletContext().getRealPath("/WEB-INF/xslt/" + page + ".xsl"));
+        StreamSource xslStream = new StreamSource(Configuration.contextPath+ "\\WEB-INF\\xslt\\" + model.get("page") + ".xsl");
         Transformer transformer = factory.newTransformer(xslStream);
         StreamResult out = new StreamResult(response.getOutputStream());
-        StreamSource in = new StreamSource(new StringReader(buildData(person)));
+        StreamSource in;
+        if (model.get("page").equals("success")){
+            XmlBuilder.build((String) model.get("pageNum"));
+           in = new StreamSource(Configuration.pageData);
+        } else {
+            in = new StreamSource(new StringReader(buildData((Person) model.get("person"))));
+        }
+
         transformer.transform(in, out);
     }
 
     private String buildData(Person person) {
-        return "<person> <firstName>" + person.getFirstName() + "</firstName><lastName>" + person.getLastName() + "</lastName><company>" + person.getCompany() + "</company><hobby>" + person.getHobby() + "</hobby></person>";
+        return "<person>" +
+                "<firstName>" + person.getFirstName() + "</firstName>" +
+                "<lastName>" + person.getLastName() + "</lastName>" +
+                "<company>" + person.getCompany() + "</company>" +
+                "<hobby>" + person.getHobby() + "</hobby>" +
+                "</person>";
     }
 }

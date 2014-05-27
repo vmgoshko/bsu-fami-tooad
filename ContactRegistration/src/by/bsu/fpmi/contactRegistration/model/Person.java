@@ -37,4 +37,9 @@ public class Person {
     public void setHobby(String hobby) {
         this.hobby = hobby;
     }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " " + company + " " + hobby;
+    }
 }
