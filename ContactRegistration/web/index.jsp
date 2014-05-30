@@ -6,6 +6,7 @@
 <body>
 <jsp:useBean id="person" class="by.bsu.fpmi.contactRegistration.model.Person" scope="session"/>
 <jsp:useBean id="lastFormId" class="java.lang.String" scope="session"/>
+<jsp:useBean id="role" class="java.lang.String" scope="session"/>
 <h1>Contact Registration</h1>
 
 <P>
@@ -19,6 +20,9 @@
 
     <label>Last Name:</label>
     <input type="text" size="20" name="lastname"><br>
+
+    <label>Role:</label>
+    <input type="text" size="20" name="role"><br>
 
     <input type="submit" value="Next">
 </form>

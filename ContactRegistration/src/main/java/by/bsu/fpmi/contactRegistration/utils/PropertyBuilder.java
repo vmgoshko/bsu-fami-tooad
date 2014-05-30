@@ -10,6 +10,5 @@ public class PropertyBuilder {
         configuration.setContextPath(request.getServletContext().getRealPath(""));
         configuration.setXmlStorage(request.getServletContext().getRealPath("\\WEB-INF\\classes\\by\\bsu\\fpmi\\contactRegistration\\xml\\database.xml"));
         configuration.setPageData(request.getServletContext().getRealPath("\\WEB-INF\\classes\\by\\bsu\\fpmi\\contactRegistration\\xml\\pageData.xml"));
-        configuration.setDataBase(request.getServletContext().getRealPath("\\WEB-INF\\classes\\dataBase.txt"));
     }
 }

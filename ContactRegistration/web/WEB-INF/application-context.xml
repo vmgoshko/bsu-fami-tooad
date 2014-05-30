@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+    <aop:aspectj-autoproxy/>
+
+    <bean id="fullNameCommand" class="by.bsu.fpmi.contactRegistration.commands.AddFullNameCommand"/>
+    <bean id="companyCommand" class="by.bsu.fpmi.contactRegistration.commands.AddCompanyCommand"/>
+    <bean id="hobbyCommand" class="by.bsu.fpmi.contactRegistration.commands.AddHobbyCommand"/>
+
+    <bean class="by.bsu.fpmi.contactRegistration.aspect.UserRoleAspect"/>
+</beans>

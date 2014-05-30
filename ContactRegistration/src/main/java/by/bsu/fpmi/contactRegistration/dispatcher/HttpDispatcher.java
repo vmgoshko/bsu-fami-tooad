@@ -25,21 +25,25 @@ public class HttpDispatcher extends Dispatcher {
         model = ModelBuilder.build(request);
         PropertyBuilder.build(request);
 
-        if (model.get("action") != null){
-            super.invoke(model);
+        try{
+            if (model.get("action") != null) {
+                super.invoke(model);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("In process: ----");
         }
         printPage(response);
     }
 
     private void printPage(HttpServletResponse response) throws IOException, TransformerException {
         TransformerFactory factory = TransformerFactory.newInstance();
-        StreamSource xslStream = new StreamSource(Configuration.contextPath+ "\\WEB-INF\\xslt\\" + model.get("page") + ".xsl");
+        StreamSource xslStream = new StreamSource(Configuration.contextPath + "\\WEB-INF\\xslt\\" + model.get("page") + ".xsl");
         Transformer transformer = factory.newTransformer(xslStream);
         StreamResult out = new StreamResult(response.getOutputStream());
         StreamSource in;
-        if (model.get("page").equals("success")){
+        if (model.get("page").equals("success")) {
             XmlBuilder.build((String) model.get("pageNum"));
-           in = new StreamSource(Configuration.pageData);
+            in = new StreamSource(Configuration.pageData);
         } else {
             in = new StreamSource(new StringReader(buildData((Person) model.get("person"))));
         }
