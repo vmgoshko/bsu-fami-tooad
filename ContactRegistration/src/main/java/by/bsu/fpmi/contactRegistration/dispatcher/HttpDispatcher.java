@@ -1,5 +1,6 @@
 package by.bsu.fpmi.contactRegistration.dispatcher;
 
+import by.bsu.fpmi.contactRegistration.exception.RoleAccessException;
 import by.bsu.fpmi.contactRegistration.model.Person;
 import by.bsu.fpmi.contactRegistration.utils.Configuration;
 import by.bsu.fpmi.contactRegistration.utils.ModelBuilder;
@@ -29,8 +30,8 @@ public class HttpDispatcher extends Dispatcher {
             if (model.get("action") != null) {
                 super.invoke(model);
             }
-        } catch (NullPointerException e) {
-            System.out.println("In process: ----");
+        } catch (RoleAccessException e) {
+            response.sendRedirect("");
         }
         printPage(response);
     }

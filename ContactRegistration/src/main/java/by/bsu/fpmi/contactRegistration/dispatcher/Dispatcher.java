@@ -1,6 +1,7 @@
 package by.bsu.fpmi.contactRegistration.dispatcher;
 
 import by.bsu.fpmi.contactRegistration.commands.Command;
+import by.bsu.fpmi.contactRegistration.exception.RoleAccessException;
 import by.bsu.fpmi.contactRegistration.utils.Configuration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -13,7 +14,7 @@ public class Dispatcher {
     private static final String ADD_HOBBY_ACTION = "addHobbyName";
     ConfigurableApplicationContext context;
 
-    public void invoke(Map<String, Object> model) {
+    public void invoke(Map<String, Object> model) throws RoleAccessException {
         context = new FileSystemXmlApplicationContext(Configuration.contextPath + "\\WEB-INF\\application-context.xml");
         factory(model).execute(model);
     }

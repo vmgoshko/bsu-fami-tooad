@@ -1,5 +1,6 @@
 package by.bsu.fpmi.contactRegistration.aspect;
 
+import by.bsu.fpmi.contactRegistration.exception.RoleAccessException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -13,7 +14,7 @@ public class UserRoleAspect {
     public void beforeAdvice(JoinPoint joinPoint) throws Throwable{
         Map<String, Object> model = (Map<String, Object>) joinPoint.getArgs()[0];
         if (!model.get("role").equals("admin")) {
-            throw new NullPointerException();
+            throw new RoleAccessException();
         }
     }
 }
