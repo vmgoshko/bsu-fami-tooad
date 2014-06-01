@@ -3,6 +3,7 @@ package by.bsu.fpmi.contactRegistration.dao.daoImpl;
 import by.bsu.fpmi.contactRegistration.dao.PersonDao;
 import by.bsu.fpmi.contactRegistration.model.Person;
 import by.bsu.fpmi.contactRegistration.utils.Configuration;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -18,7 +19,17 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 
+@Component
 public class PersonDaoImpl implements PersonDao {
+
+    private static PersonDao dao;
+
+    public static PersonDao getInstance() {
+        if (dao == null) {
+            dao = new PersonDaoImpl();
+        }
+        return dao;
+    }
 
     @Override
     public void save(Person person) {
@@ -63,13 +74,7 @@ public class PersonDaoImpl implements PersonDao {
 
             transformer.transform(source, result);
 
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
-        } catch (TransformerException tfe) {
-            tfe.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | TransformerException | SAXException | IOException e) {
             e.printStackTrace();
         }
     }

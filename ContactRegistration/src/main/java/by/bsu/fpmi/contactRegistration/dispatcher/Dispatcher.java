@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class Dispatcher {
     private static final String ADD_FULL_NAME_ACTION = "addFullName";
-    private static final String ADD_COMPANY_ACTION = "addCompanyName";
-    private static final String ADD_HOBBY_ACTION = "addHobbyName";
+    private static final String ADD_COMPANY_ACTION = "addCompany";
+    private static final String ADD_HOBBY_ACTION = "addHobby";
     ConfigurableApplicationContext context;
 
     public void invoke(Map<String, Object> model) throws RoleAccessException {

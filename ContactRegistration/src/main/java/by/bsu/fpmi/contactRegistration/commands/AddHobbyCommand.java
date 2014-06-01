@@ -1,7 +1,7 @@
 package by.bsu.fpmi.contactRegistration.commands;
 
+import by.bsu.fpmi.contactRegistration.dao.uow.UnitOfWork;
 import by.bsu.fpmi.contactRegistration.model.Person;
-import by.bsu.fpmi.contactRegistration.services.sevicesImpl.PersonServiceImpl;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public class AddHobbyCommand implements Command {
         model.put("page", "success");
         model.put("pageNum", "1");
 
-        PersonServiceImpl personService = new PersonServiceImpl();
-        personService.save(person);
+        UnitOfWork.getInstance().load(person);
+        UnitOfWork.getInstance().commit();
     }
 }

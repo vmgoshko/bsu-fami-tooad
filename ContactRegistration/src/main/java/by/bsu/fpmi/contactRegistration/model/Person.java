@@ -1,6 +1,6 @@
 package by.bsu.fpmi.contactRegistration.model;
 
-public class Person {
+public class Person implements Cloneable {
     private String firstName;
     private String lastName;
     private String company;

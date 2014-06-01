@@ -43,8 +43,8 @@ public class XmlBuilder {
         result.appendChild(pageDataRoot);
 
         NodeList persons = rootXml.getElementsByTagName("person");
-        int from = page * 5 - 4;
-        int to = 5 * page;
+        int from = page * 5 - 5;
+        int to = 5 * page - 1;
         for (int i = from; i <= to; i++) {
             Node node = result.importNode(persons.item(i), true);
             result.getDocumentElement().appendChild(node);

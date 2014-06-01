@@ -20,7 +20,4 @@ public class Configuration {
         Configuration.pageData = pageData;
     }
 
-    public void setDataBase(String dataBase) {
-        Configuration.dataBase = dataBase;
-    }
 }

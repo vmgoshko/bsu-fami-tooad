@@ -27,9 +27,9 @@
                         </tr>
                     </xsl:for-each>
                 </table>
-                <a href="/success?page=success&amp;pageNum=1">"$pageNum"</a>
-                <a href="/success?page=success&amp;pageNum=2">page 2;</a>
-                <a href="/success?page=success&amp;pageNum=3">page 3;</a>
+                <a href="/success?page=success&amp;pageNum=1">1</a>
+                <a href="/success?page=success&amp;pageNum=2">2</a>
+                <a href="/success?page=success&amp;pageNum=3">3;</a>
             </body>
         </html>
     </xsl:template>
